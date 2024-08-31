@@ -17,5 +17,23 @@ pipeline {
                 // Build your Maven project, skipping tests
              }
         }
+          stage("Build Artifact") {
+            steps {
+                sh 'mvn clean'
+                sh 'mvn compile'
+                sh 'mvn package -DskipTests'
+            }
+        }
+          stage('SonarQube Analysis') {
+            steps {
+                // Ajoutez cette commande pour exécuter l'analyse SonarQube
+                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.26.83.7:9000 -Dsonar.login=admin -Dsonar.password=1234'
+            }
+        }
+         stage("Docker Build"){
+           steps{
+                sh 'docker build -t moatezborgi/pferepository .'
+             }
+    }
     }
 }
