@@ -11,5 +11,11 @@ pipeline {
                 }
             }
         }
+         stage("Test ") {
+            steps {
+               sh 'mvn test'
+                // Build your Maven project, skipping tests
+             }
+        }
     }
 }
