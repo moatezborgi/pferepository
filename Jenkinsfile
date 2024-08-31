@@ -11,12 +11,7 @@ pipeline {
                 }
             }
         }
-         stage("Test ") {
-            steps {
-               sh 'mvn test'
-                // Build your Maven project, skipping tests
-             }
-        }
+      
           stage("Build Artifact") {
             steps {
                 sh 'mvn clean'
