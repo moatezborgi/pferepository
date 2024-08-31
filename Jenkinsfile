@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'Agent_Jenkins'
-    }
+    agent any
     stages {
         stage('Checkout the Git repository') {
             steps {
